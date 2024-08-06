@@ -54,7 +54,7 @@ function cancelPainting() {
 function onLineWidthChange(event) {
     const lineWidthValue = event.target.value
     ctx.lineWidth = lineWidthValue;
-    line.innerText = lineWidthValue; //글씨
+    line.innerText = `Pencil Width: ${lineWidthValue}`; //글씨
 }
 
 function onColorChange(event) {  //color type
@@ -72,11 +72,11 @@ function onModeClick() {
     if (isFilling) {  //채우기 모드
         isFilling = false;
         modeBtn.innerText = "Fill";
-        modeName.innerText = "Mode: Draw";
+        modeName.innerText = "Mode: Draw🖌️";
     } else { //그리기 모드
         isFilling = true;
         modeBtn.innerText = "Draw";
-        modeName.innerText = "Mode: Fill";
+        modeName.innerText = "Mode: Fill🪣";
 
     }
 }
@@ -116,7 +116,7 @@ function onDoubleClick(event) {
     if (text !== "") {
         ctx.save(); //ctx의 현재 상태, 색상, 스타일 등 모든 것을 저장함
         ctx.lineWidth = 1;
-        ctx.font =`${fontSizeValue}px bold serif`; 
+        ctx.font =`bold ${fontSizeValue}px serif`; 
         ctx.fillText(text, event.offsetX, event.offsetY);
         ctx.restore(); //save와 restore 사이에서는 어떤 수정을 하던 저장되지 않음!! (이전 상태로 다시 되돌아가는 거쥐)
     }
