@@ -10,7 +10,7 @@
 
 <body>
     <canvas></canvas>
-    <input id="line-width" type="range" min="1" max="10" value="5" />
+    <input type="range" id="line-width" min="1" max="10" value="5" />
     <span>5</span>
     <div> <!--color charts-->
         <input id="color" type="color" />
@@ -34,7 +34,10 @@
     <button id="eraser-btn">Erase</button>
     
     <input type="file" accept="image/*" id="file"/>
+    <input type="text" placeholder="Write and then double click" id="text"/>
+    <input type="range" id="font-width" min="18" max="68" value="58" step ="10"/>
 
+    <button id="save">Save image</button>
     <script src="app.js"></script>
 </body>
 
