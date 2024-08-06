@@ -2,20 +2,27 @@ const canvas = document.querySelector("canvas");
 const ctx = canvas.getContext("2d");  //getContext는 붓이라고 생각하면 됨..!
 canvas.width = 800;
 canvas.height = 800;
+ctx.lineWidth = 2;
 
-ctx.arc(200, 200, 50, 0, 2*Math.PI); //얼굴
-ctx.fillStyle = "green";
-ctx.fill();
+let isPainting = false;
 
-//눈
-ctx.beginPath();
-ctx.arc(188, 195, 5, 0, 2*Math.PI);  
-ctx.arc(212, 195, 5, 0, 2*Math.PI);
-ctx.fillStyle = "white";
-ctx.fill();
+function onMove(event) {
+    if (isPainting) {
+        ctx.lineTo(event.offsetX, event.offsetY);
+        ctx.stroke();
+        return;
+    }
+    ctx.moveTo(event.offsetX, event.offsetY);
+}
+function startPainting() {
+    isPainting = true;
+}
 
-//입
-ctx.beginPath();
-ctx.arc(200, 208, 24, 0, 1*Math.PI);
-ctx.fillStyle = "orange";
-ctx.fill();
+function cancelPainting() {
+    isPainting = false;
+}
+
+canvas.addEventListener("mousemove", onMove);
+canvas.addEventListener("mousedown", startPainting);
+canvas.addEventListener("mouseup", cancelPainting);
+canvas.addEventListener("mouseleave", cancelPainting);
